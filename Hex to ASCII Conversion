@@ -1,0 +1,25 @@
+        .ORG 8000H
+CODE SEGMENT
+        ASSUME CS:CODE
+START:  MOV DPTR,#9000H
+        MOVX A,@DPTR
+        ANL A,#OFH
+        MOV R0,A
+        MOVX A,@DPTR
+        ANL A,#F0H
+        SWAP A
+        CJNE A,#0AH,L1
+L1:     JC L2
+        ADD A,#07H
+L2:     ADD A,#30H
+        INC DPTR
+        MOVX @DPTR,A
+        MOV A,R0
+        CJNE A,#0AH,L3
+        JC L4
+        ADD A,#07H
+L4:     ADD A,#30H
+        INC DPTR
+        MOVX @DPTR,A
+CODE ENDS
+END
