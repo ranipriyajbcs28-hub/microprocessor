@@ -1,0 +1,13 @@
+        .ORG 8000H
+START:  MOV DPTR,#9000H
+        MOVX A,@DPTR
+        CLR C
+        SUBB A,#30H
+        CJNE A,#0AH,L1
+        JC STORE
+L1:     MOVX A,@DPTR
+        CLR C
+STORE:  SUBB A,#37H
+        INC DPTR
+        MOVX @DPTR,A
+END
