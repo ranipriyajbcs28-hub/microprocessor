@@ -1,0 +1,23 @@
+        .ORG 8000H
+CODE SEGMENT
+        ASSUME CS:CODE
+START:  MOV DPTR,#9000H
+        MOVX A,#08H
+        DIV AB
+        MOV R,B
+        MOV R,B
+        MOV B,#08H
+        DIV AB
+        MOV R1,B
+        MOV R1,B
+        MOV R2,A
+        INC DPTR
+        MOV A,R2
+        MOVX @DPTR,A
+        INC DPTR
+        MOV A,R2
+        MOVX @DPTR,A
+        INC DPTR
+        MOV A,R0
+        MOVX @DPTR,A
+END
